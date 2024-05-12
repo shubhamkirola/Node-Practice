@@ -5,9 +5,11 @@ const example = require("./example.js");
 const express = require("express");
 const app = express();
 const db = require('./db.js')
+require('dotenv').config();
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.json());
+const PORT = process.env.PORT || 3000;
 
 const menuRoutes = require('./Routesfile/MenuRoutes.js')
 app.use('/Menu', menuRoutes)
@@ -39,6 +41,6 @@ app.get("/recession", (req, res) => {
     res.send(market.hiring) // ek hi response jata h
 })
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("working")
 })
