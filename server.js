@@ -27,6 +27,16 @@ app.use('/Person', personRoutes)
 
 // fs.appendFile("name.txt", "username:shubham", ()=> {console.log("ban gyi file")})
 
+//Middleware function
+const logRequest = (req, res, next) => {
+    console.log(`the current URL is ${req.originalURL} and time is ${new Date}`);
+    next();
+}
+
+//it takes three parameters and the third one is next(), this tells the program to execute the next function if the middleware function is executed properly.
+
+app.use(logRequest);
+
 app.get("/", (req, res) => {
     res.send("You will get one in the tech as a software dev soon")
 })
